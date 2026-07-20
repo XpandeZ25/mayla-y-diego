@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carta de Amor Estelar</title>
+  <link rel="stylesheet" href="styles.css?v=34">
+</head>
+<body>
+  <canvas id="universo" aria-hidden="true"></canvas>
+  <div id="ramoOverlay" class="ramo-overlay" aria-live="polite" aria-hidden="true"></div>
+  <div id="legoOverlay" class="lego-overlay" aria-live="polite" aria-hidden="true"></div>
+  <div id="venusOverlay" class="venus-overlay" aria-live="polite" aria-hidden="true"></div>
+  <div id="tierraOverlay" class="tierra-overlay" aria-live="polite" aria-hidden="true"></div>
+  <div id="saturnoOverlay" class="saturno-overlay" aria-live="polite" aria-hidden="true"></div>
+  <div id="uranoOverlay" class="urano-overlay" aria-live="polite" aria-hidden="true"></div>
+  <div id="neptunoOverlay" class="neptuno-overlay" aria-live="polite" aria-hidden="true"></div>
+  <div id="bigBangOverlay" class="bigbang-overlay" aria-live="polite" aria-hidden="true"></div>
+
+  <main class="carta-espacial">
+    <section class="hero-amor" aria-labelledby="tituloUniverso">
+      <p class="eyebrow">Una carta escrita entre constelaciones</p>
+      <h1 id="tituloUniverso" class="titulo-universo" tabindex="0">Mi universo eres tú</h1>
+      <p id="declaracion" class="declaracion" tabindex="0">
+        Si el cielo tuviera que elegir su luz favorita, estoy seguro de que pronunciaría tu nombre.
+      </p>
+      <button id="botonPoema" class="boton-estelar" type="button">
+        <span class="icono">✦</span>
+        Poema estelar
+      </button>
+      <div class="portal-retratos" aria-label="Crear nuestro universo">
+        <button class="retrato-cosmico" type="button" aria-label="Crear universo con Mayla y Diego">
+          <img src="media/saturno/mayla.jpg" alt="Mayla">
+        </button>
+        <button class="retrato-cosmico" type="button" aria-label="Crear universo con Diego y Mayla">
+          <img src="media/saturno/diego.jpg" alt="Diego">
+        </button>
+      </div>
+    </section>
+
+    <section class="sistema-solar" aria-label="Sistema solar personalizado">
+      <div class="rotulo-universo" aria-hidden="true">
+        <strong>Nuestro universo</strong>
+        <span>Diego & Mayla</span>
+      </div>
+      <button class="planeta planeta-sol" type="button" data-planeta="SOL" aria-label="Explorar SOL">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">SOL</span>
+      </button>
+      <button class="planeta planeta-mercurio" type="button" data-planeta="MERCURIO" aria-label="Explorar MERCURIO">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">MERCURIO</span>
+      </button>
+      <button class="planeta planeta-venus" type="button" data-planeta="VENUS" aria-label="Explorar VENUS">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">VENUS</span>
+      </button>
+      <button class="planeta planeta-tierra" type="button" data-planeta="TIERRA" aria-label="Explorar TIERRA">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">TIERRA</span>
+      </button>
+      <button class="planeta planeta-marte" type="button" data-planeta="MARTE" aria-label="Crear ramo desde MARTE">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">MARTE</span>
+      </button>
+      <button class="planeta planeta-jupiter" type="button" data-planeta="JÚPITER" aria-label="Explorar JÚPITER">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">JÚPITER</span>
+      </button>
+      <button class="planeta planeta-saturno" type="button" data-planeta="SATURNO" aria-label="Explorar SATURNO">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">SATURNO</span>
+      </button>
+      <button class="planeta planeta-urano" type="button" data-planeta="URANO" aria-label="Explorar URANO">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">URANO</span>
+      </button>
+      <button class="planeta planeta-neptuno" type="button" data-planeta="NEPTUNO" aria-label="Explorar NEPTUNO">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">NEPTUNO</span>
+      </button>
+      <button class="planeta planeta-dierika" type="button" data-planeta="DIERIKA" aria-label="Explorar DIERIKA">
+        <span class="orbita"></span>
+        <span class="cuerpo"></span>
+        <span class="nombre">DIERIKA</span>
+      </button>
+    </section>
+
+    <section class="panel-poema" aria-live="polite">
+      <div class="marco-cristal">
+        <p class="label-poema">Poema del momento</p>
+        <p id="poema" class="poema">
+          En la noche donde el silencio brilla,<br>
+          tu risa despierta mi constelación;<br>
+          cada estrella aprende tu orilla,<br>
+          cada latido gira en tu dirección.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js?v=29"></script>
+</body>
+</html>

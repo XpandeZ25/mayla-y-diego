@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DIERIKA - Diego & Mayla</title>
+  <link rel="stylesheet" href="dierika.css?v=7">
+</head>
+<body>
+  <canvas id="dierikaStars" aria-hidden="true"></canvas>
+
+  <main class="dierika-world">
+    <header class="dierika-hero">
+      <a class="back-link" href="index.html">Volver al universo</a>
+      <p class="eyebrow">Planeta DIERIKA</p>
+      <h1>Diego & Mayla</h1>
+      <p class="hero-copy">
+        Un mundo para guardar canciones, poemas y recuerdos que brillan como estrellas.
+      </p>
+    </header>
+
+    <nav class="tabs" aria-label="Secciones de DIERIKA">
+      <button class="tab active" data-tab="music">Música</button>
+      <button class="tab" data-tab="poems">Poemas</button>
+      <button class="tab" data-tab="diary">Diario</button>
+    </nav>
+
+    <section id="music" class="tab-panel active">
+      <div class="section-heading">
+        <p class="eyebrow">Nuestra playlist</p>
+        <h2>Canciones para mirarnos bonito</h2>
+      </div>
+      <div class="video-grid" id="videoGrid"></div>
+    </section>
+
+    <section id="poems" class="tab-panel">
+      <div class="section-heading">
+        <p class="eyebrow">Poemas</p>
+        <h2>Versos para Mayla</h2>
+      </div>
+      <div class="poem-list">
+        <article class="romantic-poem">
+          <h3>No sé cómo describirte</h3>
+          <p>
+            No tengo palabras para describirte.<br>
+            Esa frase la grité al cielo con tu rostro en las nubes,<br>
+            porque la mejor descripción es estar con vos,<br>
+            saber que estás conmigo,<br>
+            querer que te brillen los ojos<br>
+            como me brillan los míos.<br><br>
+            Yo no tengo cómo describirte,<br>
+            porque vos eres el antídoto a lo inefable;<br>
+            o sea, lo que quiero decir<br>
+            es que no alcanzan las palabras para nombrarte.<br><br>
+            De todas las palabras inventadas<br>
+            para decir lo indecible,<br>
+            vos eres el sinónimo<br>
+            de todo lo lindo que existe.<br><br>
+            Si fuera por mí,<br>
+            los diccionarios serían cuatro páginas<br>
+            dedicadas a definir lo feo,<br>
+            a definir todo lo que no eres vos.<br><br>
+            Estoy agradecido de que estés acá,<br>
+            porque anda a saber qué palabra terrible,<br>
+            qué palabra que no te hiciera justicia,<br>
+            hubiera inventado un alemán para intentar explicarte.<br><br>
+            Qué impronunciable hubiese sido el francés sin tu nombre,<br>
+            y qué poco compleja sería dicha en inglés<br>
+            si no existiera tu manera de volverlo todo claro.<br><br>
+            Pero estás acá,<br>
+            con la suerte mía de entendernos incluso<br>
+            cuando no decimos nada.<br><br>
+            Y si algún día me preguntan qué eres,<br>
+            no voy a buscar una palabra perfecta:<br>
+            voy a sonreír, voy a pensarte,<br>
+            y voy a decir que eres Mayla,<br>
+            la forma más bonita que encontró la vida<br>
+            para enseñarme lo que significa amar.
+          </p>
+        </article>
+        <article class="romantic-poem">
+          <h3>Me di cuenta</h3>
+          <p>
+            Me di cuenta de que es amor<br>
+            porque quiero dedicarte canciones cursis<br>
+            que ni siquiera me gustan,<br>
+            pero me recuerdan a ella.<br><br>
+            Canciones demasiado latinas,<br>
+            canciones que son<br>
+            la romantización de la romantización<br>
+            de la romantización del romance.<br><br>
+            Canciones que plantean un mundo ideal<br>
+            que no existe,<br>
+            pero donde ella debería poder vivir.<br><br>
+            Me di cuenta porque le quiero comprar flores<br>
+            y me siento un nene de trece años,<br>
+            tratando de gustarle<br>
+            y demostrarle que los hombres detallistas<br>
+            aún existimos.<br><br>
+            Pero creo que a la mayoría le dan alergia,<br>
+            entonces no,<br>
+            no quiero que la pase mal.<br><br>
+            De grande entiendes<br>
+            que ser detallista es lograr<br>
+            que la otra persona se sienta especial,<br>
+            pero también que no la pase como el orto.<br><br>
+            Me di cuenta porque no me importa tener la razón;<br>
+            me importa más entendernos<br>
+            y saber que hablamos lo mismo.<br><br>
+            Que lo que llamamos peleas<br>
+            son discusiones sobre qué mirar<br>
+            mientras comemos.<br><br>
+            Me di cuenta porque lloramos.<br>
+            Yo suelo hacerlo cuando hablo de ella;<br>
+            ella suele hacerlo por costumbre.<br>
+            Siempre que llora se ríe,<br>
+            y es como esos arcoíris<br>
+            que salen en medio de la lluvia.<br><br>
+            Lo que quiero decir<br>
+            es que ella es un cielo.<br><br>
+            Me di cuenta porque todo lo que me avergüenza<br>
+            a ella le gusta de mí,<br>
+            y a mí nada de ella me da vergüenza;<br>
+            así que pienso que sentimos lo mismo.<br><br>
+            Me di cuenta no porque le escriba,<br>
+            sino porque cuando me pregunten<br>
+            qué es poesía,<br>
+            qué es el arte,<br>
+            qué es esto que siento,<br>
+            ya sea que me apuren<br>
+            o me den años para pensar,<br>
+            mi primera respuesta<br>
+            siempre va a ser ella.
+          </p>
+        </article>
+        <article class="romantic-poem">
+          <h3>Me di cuenta II</h3>
+          <p>
+            Leí suficiente para saber<br>
+            que esto que me pasa con vos<br>
+            es más que una realidad.<br><br>
+            Es como guardar cien atardeceres<br>
+            en un pendrive,<br>
+            como que me acaricies la mejilla<br>
+            y que no se pare el tiempo.<br><br>
+            Quererte<br>
+            como si no hubiese querido antes,<br>
+            como meter el río<br>
+            en una botella retornable.<br><br>
+            Así de inmenso, digo,<br>
+            que lo que me pasa con vos<br>
+            le queda chico a este envase.<br><br>
+            Por eso digo que esto pasa<br>
+            porque sucede,<br>
+            porque fluye,<br>
+            porque desde que estás aquí<br>
+            lo imposible parece nada.<br><br>
+            Sobre infinitas chances,<br>
+            esta se dio,<br>
+            y el infinito se parece bastante<br>
+            a lo imposible.<br><br>
+            Lo que pasa<br>
+            es que los límites de la realidad<br>
+            se vuelven bruma.<br><br>
+            El infinito<br>
+            me aparece enumerado<br>
+            cada vez que pronuncio tu nombre.<br><br>
+            Y si algún día el mundo vuelve a ser pequeño,<br>
+            si la vida nos aprieta o nos prueba,<br>
+            yo quiero quedarme ahí,<br>
+            cerquita de vos,<br>
+            haciendo espacio con las manos,<br>
+            para que nuestro amor siga creciendo<br>
+            incluso donde nadie creyó que cabía.
+          </p>
+        </article>
+        <article class="romantic-poem">
+          <h3>Cada vez</h3>
+          <p>
+            Cada vez que te tocas el pelo,<br>
+            el tiempo un poco se detiene.<br><br>
+            El universo est&aacute; sometido<br>
+            a actos tan sencillos,<br>
+            y me parece encantador.<br><br>
+            Por ejemplo,<br>
+            el d&iacute;a que me dijiste<br>
+            que te gustaba estar conmigo,<br>
+            ese d&iacute;a se apagaron todos los fuegos,<br>
+            porque yo no dej&eacute; de respirar:<br>
+            hab&iacute;a desaparecido el ox&iacute;geno.<br><br>
+            O la vez que me diste tu mano;<br>
+            me enter&eacute; de que todos los santos<br>
+            se preocuparon un toque.<br><br>
+            O ese d&iacute;a en que se descubrieron<br>
+            todos los secretos,<br>
+            pero nosotros segu&iacute;amos confiando.<br><br>
+            A veces me pregunto<br>
+            si es que vos tienes algo de magia,<br>
+            o si le restas al mundo<br>
+            un poco de realidad.<br><br>
+            El d&iacute;a que naciste<br>
+            le avisaron a tus pap&aacute;s<br>
+            que vos eras la clave de reinicio<br>
+            de la Tierra.<br><br>
+            Yo, al menos, me enter&eacute;<br>
+            cuando Dios me pregunt&oacute;<br>
+            si ya hab&iacute;a recorrido a vos,<br>
+            que eres el paso previo a los milagros.<br><br>
+            Cuando te tocas el pelo,<br>
+            el tiempo un poco se detiene.<br><br>
+            &iquest;No sabr&aacute;s si tambi&eacute;n<br>
+            se detiene por m&iacute;?
+          </p>
+        </article>
+        <article class="romantic-poem">
+          <h3>El mundo se queda corto</h3>
+          <p>
+            El mundo se queda corto<br>
+            de todo lo que quiero darte.<br><br>
+            Necesito otro sistema solar,<br>
+            otro universo,<br>
+            o al menos algo nuevo.<br><br>
+            Quiero darte cosas<br>
+            de las que no necesitas:<br>
+            aromas de flores que no existen,<br>
+            cartas de lugares que no conocemos,<br>
+            empanadas rellenas<br>
+            de recuerdos alucinantes.<br><br>
+            Besos en lugares<br>
+            que no recordamos.<br><br>
+            Que si peleamos,<br>
+            sea todo nuevo:<br>
+            ideas novedosas,<br>
+            incluso que no duelan<br>
+            y duren poco,<br>
+            como un tatuaje de henna<br>
+            que te haces en la feria.<br><br>
+            Discutir de problemas<br>
+            que no sean los nuestros,<br>
+            con soluciones inalcanzables.<br><br>
+            El mundo se queda corto<br>
+            de todo lo que quiero darte,<br>
+            porque no es de este mundo<br>
+            lo que a m&iacute; me corre por la sangre.<br><br>
+            Porque nada de vos corresponde<br>
+            a esta Tierra:<br>
+            ni siquiera el cielo,<br>
+            ni siquiera el r&iacute;o.<br><br>
+            Quiero que me cuentes<br>
+            lo que ya sabes,<br>
+            porque yo soy de otro mundo tambi&eacute;n<br>
+            y ya me quisieron conquistar por la fuerza,<br>
+            y por ah&iacute; no es.<br><br>
+            Cu&eacute;ntame nom&aacute;s,<br>
+            sin apuro,<br>
+            as&iacute; tengo tiempo<br>
+            de conseguir lo que este mundo<br>
+            todav&iacute;a no tiene<br>
+            para darte.<br><br>
+            Y si aun as&iacute; no lo encuentro,<br>
+            voy a inventarlo con mis manos,<br>
+            con mis d&iacute;as,<br>
+            con cada latido que aprendi&oacute; tu nombre,<br>
+            para que nunca dudes<br>
+            que amarte me hizo querer construir<br>
+            un universo entero a tu medida.
+          </p>
+        </article>
+        <article>
+          <h3>Cuando suena tu nombre</h3>
+          <p>No sé si fue la vida, Diosito o una estrella paciente,<br>pero algo juntó mi camino con el tuyo.<br>Desde entonces, hasta el silencio tiene música<br>cuando pienso en ti.</p>
+        </article>
+        <article>
+          <h3>Mi lugar</h3>
+          <p>Si el mundo se vuelve difícil,<br>yo quiero ser la mano que no se suelta;<br>la casa que vuelve a encender la luz,<br>el amor que se queda incluso en los días nublados.</p>
+        </article>
+        <article>
+          <h3>Constelación</h3>
+          <p>Mayla, si alguna vez dudas de lo inmenso que eres,<br>mira el cielo y acuérdate de esto:<br>hay universos enteros que no brillan tanto<br>como mi corazón cuando te encuentra.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="diary" class="tab-panel">
+      <div class="section-heading">
+        <p class="eyebrow">Diario</p>
+        <h2>Nuestras palabras</h2>
+      </div>
+      <div class="diary-card">
+        <textarea id="diaryText" placeholder="Escribe aquí una promesa, un recuerdo, una fecha bonita o algo que quieras guardar para Diego & Mayla..."></textarea>
+        <div class="diary-actions">
+          <button id="saveDiary">Guardar</button>
+          <button id="clearDiary" class="ghost">Limpiar</button>
+        </div>
+        <p id="diaryStatus" class="status-line">Tu diario se guarda en este navegador.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="dierika.js?v=5"></script>
+</body>
+</html>

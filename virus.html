@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virus de Amor de Mayla & Diego</title>
+  <link rel="stylesheet" href="virus.css?v=5">
+</head>
+<body>
+  <main class="virus-app">
+    <section id="lobby" class="panel lobby">
+      <p class="eyebrow">Júpiter presenta</p>
+      <h1>Virus de Amor de Mayla & Diego</h1>
+      <p class="quote">"mi antídoto eres tú"</p>
+      <input id="playerName" maxlength="18" placeholder="Tu nombre">
+      <div class="toggles">
+        <label><input id="virus2" type="checkbox"> Virus! 2</label>
+        <label><input id="halloween" type="checkbox"> Halloween</label>
+      </div>
+      <button id="createRoom">Crear sala</button>
+      <div class="join-row">
+        <input id="roomInput" maxlength="6" placeholder="Código">
+        <button id="joinRoom">Unirme</button>
+      </div>
+      <p id="lobbyMsg" class="hint">Crea una sala y comparte el código con la otra persona.</p>
+    </section>
+
+    <section id="game" class="game hidden">
+      <header class="game-top">
+        <div>
+          <p class="eyebrow">Virus de Amor</p>
+          <h2 id="roomCode">------</h2>
+        </div>
+        <div class="turn-pill" id="turnInfo">Esperando...</div>
+        <button id="startGame">Iniciar partida</button>
+      </header>
+
+      <section class="uno-table">
+        <div id="opponentBoard" class="player-zone opponent-zone"></div>
+        <div class="center-stack">
+          <div class="pile deck-pile">Mazo <strong id="deckCount">0</strong></div>
+          <div class="turn-core" id="turnCore">VS</div>
+          <div class="pile discard-pile">Descarte <strong id="discardCount">0</strong></div>
+        </div>
+        <div id="yourBoard" class="player-zone your-zone"></div>
+      </section>
+
+      <section class="hand-dock">
+        <div class="hand-title">
+          <h3>Tu mano</h3>
+          <div class="hand-actions">
+            <button id="discardCard" class="secondary-action" disabled>No puedo jugar / Descartar</button>
+            <button id="playCard" disabled>Jugar carta</button>
+          </div>
+        </div>
+        <div id="hand" class="hand"></div>
+      </section>
+
+      <section class="log-panel">
+        <h3>Bitácora</h3>
+        <div id="log"></div>
+      </section>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="virus.js?v=4"></script>
+</body>
+</html>
