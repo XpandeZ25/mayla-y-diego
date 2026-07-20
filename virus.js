@@ -14,6 +14,10 @@ let playerId = localStorage.getItem("virusPlayer") || "";
 let state = null;
 let selectedCard = null;
 let poller = null;
+let localMode = false;
+let localDeck = [];
+let localDiscard = [];
+let localNextId = 1;
 
 const $ = (id) => document.getElementById(id);
 
@@ -109,6 +113,94 @@ function render() {
   $("log").innerHTML = state.log.slice().reverse().map((line) => `<div>${line}</div>`).join("");
 }
 
+function makeLocalCard(kind, color, name, icon, effect) {
+  return { id: `local-${localNextId++}`, kind, color, name, icon, effect };
+}
+
+function buildLocalDeck() {
+  const colors = [
+    ["red", "Corazon", "♥"],
+    ["yellow", "Hueso", "🦴"],
+    ["green", "Estomago", "♡"],
+    ["blue", "Medicina", "💊"]
+  ];
+  const deck = [];
+  for (let i = 0; i < 6; i += 1) {
+    colors.forEach(([color, name, icon]) => {
+      deck.push(makeLocalCard("organ", color, name, icon, "Construye tu cuerpo."));
+      deck.push(makeLocalCard("medicine", color, `Antidoto ${name}`, "💉", "Cura o protege."));
+      deck.push(makeLocalCard("virus", color, `Virus ${name}`, "☣", "Ataca al rival."));
+    });
+  }
+  return deck.sort(() => Math.random() - 0.5);
+}
+
+function drawLocalCards(player, count) {
+  for (let i = 0; i < count; i += 1) {
+    if (!localDeck.length) localDeck = localDiscard.splice(0).sort(() => Math.random() - 0.5);
+    const card = localDeck.pop();
+    if (card) player.hand.push(card);
+  }
+}
+
+function createLocalPlayer(slot, name) {
+  return {
+    slot,
+    name,
+    hand: [],
+    organs: { red: null, yellow: null, white: null, green: null, orange: null, bionic: null },
+    playableIds: []
+  };
+}
+
+function updateLocalPlayable() {
+  state.players.forEach((player) => {
+    player.playableIds = player.slot === state.currentTurn ? player.hand.map((card) => card.id) : [];
+  });
+}
+
+function startLocalGame() {
+  localMode = true;
+  clearInterval(poller);
+  localNextId = 1;
+  localDiscard = [];
+  localDeck = buildLocalDeck();
+  const p1 = createLocalPlayer(1, $("playerName").value.trim() || "Diego");
+  const p2 = createLocalPlayer(2, "Mayla");
+  drawLocalCards(p1, 3);
+  drawLocalCards(p2, 3);
+  state = {
+    roomCode: "AMOR",
+    phase: "playing",
+    currentTurn: 1,
+    youSlot: 1,
+    deckCount: localDeck.length,
+    discardCount: 0,
+    players: [p1, p2],
+    log: ["Modo celular activado: jueguen pasando el dispositivo con amor."]
+  };
+  updateLocalPlayable();
+  render();
+}
+
+function localPlaySelected(discardOnly = false) {
+  if (!state || !selectedCard) return;
+  const player = state.players.find((item) => item.slot === state.currentTurn);
+  const cardIndex = player.hand.findIndex((card) => card.id === selectedCard);
+  if (cardIndex < 0) return;
+  const [card] = player.hand.splice(cardIndex, 1);
+  localDiscard.push(card);
+  drawLocalCards(player, 1);
+  state.log.push(discardOnly ? `${player.name} descarto una carta.` : `${player.name} jugo ${card.name}.`);
+  state.currentTurn = state.currentTurn === 1 ? 2 : 1;
+  state.youSlot = state.currentTurn;
+  state.deckCount = localDeck.length;
+  state.discardCount = localDiscard.length;
+  selectedCard = null;
+  updateLocalPlayable();
+  render();
+}
+
 async function refresh() {
   if (!roomCode || !playerId) return;
   try {
@@ -128,6 +220,10 @@ function startPolling() {
 }
 
 $("createRoom").addEventListener("click", async () => {
+  if (location.protocol === "file:" || !["localhost", "127.0.0.1"].includes(location.hostname)) {
+    startLocalGame();
+    return;
+  }
   try {
     const data = await api("/api/create", {
       name: $("playerName").value,
@@ -147,6 +243,10 @@ $("createRoom").addEventListener("click", async () => {
 });
 
 $("joinRoom").addEventListener("click", async () => {
+  if (location.protocol === "file:" || !["localhost", "127.0.0.1"].includes(location.hostname)) {
+    toast("En la version web publica usa Crear sala para modo celular.");
+    return;
+  }
   try {
     const data = await api("/api/join", { roomCode: $("roomInput").value.trim(), name: $("playerName").value });
     roomCode = data.roomCode;
@@ -161,6 +261,11 @@ $("joinRoom").addEventListener("click", async () => {
 });
 
 $("startGame").addEventListener("click", async () => {
+  if (localMode) {
+    state.phase = "playing";
+    render();
+    return;
+  }
   try {
     const data = await api("/api/start", { roomCode, playerId });
     state = data.state;
@@ -171,6 +276,10 @@ $("startGame").addEventListener("click", async () => {
 });
 
 $("playCard").addEventListener("click", async () => {
+  if (localMode) {
+    localPlaySelected(false);
+    return;
+  }
   try {
     const data = await api("/api/play", { roomCode, playerId, cardId: selectedCard });
     selectedCard = null;
@@ -182,6 +291,10 @@ $("playCard").addEventListener("click", async () => {
 });
 
 $("discardCard").addEventListener("click", async () => {
+  if (localMode) {
+    localPlaySelected(true);
+    return;
+  }
   try {
     const selectedEl = document.querySelector(".card.selected");
     if (selectedEl) selectedEl.classList.add("discarding");
@@ -195,4 +308,4 @@ $("discardCard").addEventListener("click", async () => {
   }
 });
 
-if (roomCode && playerId) startPolling();
+if (location.protocol !== "file:" && ["localhost", "127.0.0.1"].includes(location.hostname) && roomCode && playerId) startPolling();
